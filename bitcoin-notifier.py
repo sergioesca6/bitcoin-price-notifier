@@ -2,12 +2,14 @@ import requests
 import time
 from datetime import datetime
 
-BITCOIN_API_URL = 'https://api.coinmarketcap.com/v1/ticker/bitcoin/'
+BITCOIN_API_URL = 'https://api.coinmarketcap.com/v1/ticker/'
 BITCOIN_PRICE_THRESHOLD = 10000
 IFTTT_WEBHOOKS_URL = 'https://maker.ifttt.com/trigger/{}/with/key/{your-IFTTT-key}'
 
-def get_latest_bitcoin_price():
-    response = requests.get(BITCOIN_API_URL)
+def get_latest_cryptocurrency_price():
+    coin = input('which cryptocurrency would you like to be notified about (full name)? ')
+    concat = BITCOIN_API_URL + coin + '/'
+    response = requests.get(concat)
     response_json = response.json()
     return float(response_json[0]['price_usd'])
 
@@ -28,7 +30,7 @@ def format_bitcoin_history(bitcoin_history):
 def main():
     bitcoin_history = []
     while True:
-        price = get_latest_bitcoin_price()
+        price = get_latest_cryptocurrency_price()
         date = datetime.now()
         bitcoin_history.append({'date': date, 'price': price})
 
