@@ -8,6 +8,8 @@ For this project we used the requests package. Webhooks are used to connect the 
 
 It is a full-fledged Bitcoin price notification service that will be easily extendable to other cryptocurrencies and services.
 
+
+
 ## Notification Details
 
 Bitcoin Price Notifications With Python
@@ -22,6 +24,33 @@ The two IFTTT applets created:
 Both will be triggered by our Python app which will consume the data from the Coinmarketcap API.
 
 An IFTTT applet is composed of two parts: a trigger and an action.
+
+
+
+## IFTTT
+
+Sending a Test IFTTT Notification
+
+Set up a new account https://ifttt.com/join  
+install  mobile app (if you want to notifications to your phone)
+
+To create a new test applet follow these steps:
+
+1. Click on the “this” button
+2. Search for the “webhooks” service and select the “Receive a web request” trigger
+3. Let’s name the event test_event
+4. Now select the “that” button
+5. Search for the “notifications” service and select the “Send a notification from the IFTTT app”
+6. Change the message to I just triggered my first IFTTT action! and click on “Create action”
+7. Click on the “Finish” button
+
+To see the documentation on how to use the IFTTT webhooks go to https://ifttt.com/maker_webhooks and click on the “Documentation” button in the top right corner. The documentation page contains the webhook URL and it looks like this:
+
+https://maker.ifttt.com/trigger/{event}/with/key/{your-IFTTT-key}
+
+Substitute the {event} part with whatever name you gave our event in step 3, when you created the applet. The {your-IFTTT-key} part is already populated with your IFTTT key.
+
+
 
 ## How it works
 
